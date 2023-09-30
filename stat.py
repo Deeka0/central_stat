@@ -11,7 +11,7 @@ class Stat:
     """
     
     
-    def mean(array, floats=None):
+    def mean(self, array, floats=None):
         """
         Returns the median of an array.
         If the optional argument is passed, the returned mean is limited according to floating points argument.
@@ -26,7 +26,7 @@ class Stat:
         return mean
     
     
-    def median(array, isfloat=None):
+    def median(self, array, isfloat=None):
         """
         Returns the median of an array.
         If the optional argument is passed, the median is returned as a float.
@@ -42,7 +42,7 @@ class Stat:
         return array[mid]
         
     
-    def mode(array, frequency=None):
+    def mode(self, array, frequency=None):
         """
         Returns the mode of a array.
         If the optional argument is passed, a tuple is returned containing the mode and it's modal frequency.
@@ -72,7 +72,7 @@ class Stat:
                 return mode
 
 
-    def variance(array, floats=None):
+    def variance(self, array, floats=None):
         """
         Returns the variance of an array.
         If the optional argument is passed, the returned variance is limited according to floating points argument.
@@ -91,7 +91,7 @@ class Stat:
         return Stat.mean(temp_array)
 
 
-    def std(array, floats=None):
+    def std(self, array, floats=None):
         """
         Returns the standard deviation of an array.
         If the optional argument is passed, the returned standard deviation is limited according to floating points argument.
