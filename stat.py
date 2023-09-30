@@ -13,7 +13,7 @@ class Stat:
     
     def mean(self, array, floats=None):
         """
-        Returns the median of an array.
+        Returns the mean of an array.
         If the optional argument is passed, the returned mean is limited according to floating points argument.
         
         Parameters:
