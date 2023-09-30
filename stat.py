@@ -81,14 +81,14 @@ class Stat:
         - An array of integers or floats
         - (Optional) Takes an integer as input
         """
-        mean = Stat.mean(array)
+        mean = self.mean(array)
         temp_array = []
 
         for i in array:
             temp_array.append((i - mean) ** 2)
         if floats:
-            return round((Stat.mean(temp_array)), floats)
-        return Stat.mean(temp_array)
+            return round((self.mean(temp_array)), floats)
+        return self.mean(temp_array)
 
 
     def std(self, array, floats=None):
@@ -101,7 +101,5 @@ class Stat:
         - (Optional) Takes an integer as input
         """
         if floats:
-            return round((Stat.variance(array) ** .5), floats)
-        return Stat.variance(array) ** .5
-
-
+            return round((self.variance(array) ** .5), floats)
+        return self.variance(array) ** .5
