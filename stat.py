@@ -18,7 +18,7 @@ class Stat:
         
         Parameters:
         - An array of integers or floats
-        - (Optional) Takes an integer as input
+        - (Optional) Takes an integer as argument
         """
         mean = sum(array) / len(array)
         if floats:
@@ -33,7 +33,7 @@ class Stat:
 
         Parameters:
         - An array of integers or floats
-        - (Optional) Takes a boolean as input
+        - (Optional) Takes a boolean as argument
         """
         array.sort()
         mid = len(array) // 2
@@ -41,35 +41,20 @@ class Stat:
             return float(array[mid])
         return array[mid]
         
-    
-    def mode(self, array, frequency=None):
+        
+    def mode(array):
         """
         Returns the mode of a array.
-        If the optional argument is passed, a tuple is returned containing the mode and it's modal frequency.
         
         Parameters:
         - An array of integers or floats
-        - (Optional) Takes a boolean as input
         """
-        explored = []
-        modal = 0
-        mode = None
-
-        # Analysis 1
-        for i in array:
-            if i not in explored:
-                num = array.count(i)
-                if num > modal:
-                    modal = num
-                explored.append(i)
-        
-        # Analysis 2
-        for i in explored:
-            if array.count(i) == modal:
-                mode = i
-                if frequency:
-                    return mode, modal
-                return mode
+        from collections import Counter
+        pairs = Counter(iter(array)).most_common(1)
+        try:
+            return pairs[0][0]
+        except IndexError:
+            raise Exception
 
 
     def variance(self, array, floats=None):
@@ -79,7 +64,7 @@ class Stat:
         
         Parameters:
         - An array of integers or floats
-        - (Optional) Takes an integer as input
+        - (Optional) Takes an integer as argument
         """
         mean = self.mean(array)
         temp_array = []
@@ -98,7 +83,7 @@ class Stat:
         
         Parameters:
         - An array of integers or floats
-        - (Optional) Takes an integer as input
+        - (Optional) Takes an integer as argument
         """
         if floats:
             return round((self.variance(array) ** .5), floats)
