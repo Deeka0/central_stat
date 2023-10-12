@@ -45,7 +45,7 @@ class Stat(Counter):
         return array[mid]
         
     
-    def mode1(self, array, frequency=None):
+    def mode_beta1(self, array, frequency=None):
         """
         Returns the mode of a array.
         If the optional argument is passed, a tuple is returned containing the mode and it's modal frequency.
@@ -76,7 +76,7 @@ class Stat(Counter):
                 return mode
             
 
-    def mode2(self, array, frequency=None):
+    def mode_beta2(self, array, frequency=None):
         """
         Returns the mode of a array.
         If the optional argument is passed, a tuple is returned containing the mode and it's modal frequency.
@@ -109,7 +109,6 @@ class Stat(Counter):
         Parameters:
         - An array of integers or floats
         """
-        # from collections import Counter
         pairs = Counter(iter(array)).most_common(1)
         try:
             return pairs[0][0]
