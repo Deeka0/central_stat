@@ -1,4 +1,7 @@
-class Stat:
+from collections import Counter
+
+
+class Stat(Counter):
     """
     Computations for statistical central tendencies.
 
@@ -41,15 +44,72 @@ class Stat:
             return float(array[mid])
         return array[mid]
         
+    
+    def mode1(self, array, frequency=None):
+        """
+        Returns the mode of a array.
+        If the optional argument is passed, a tuple is returned containing the mode and it's modal frequency.
         
-    def mode(array):
+        Parameters:
+        - An array of integers or floats
+        - (Optional) Takes a boolean as argument
+        """
+        array = list(array) # To convert numpy ndarrays
+        explored = []
+        modal = 0
+        mode = None
+
+        # Analysis 1
+        for i in array:
+            if i not in explored:
+                num = array.count(i)
+                if num > modal:
+                    modal = num
+                explored.append(i)
+        
+        # Analysis 2
+        for i in explored:
+            if array.count(i) == modal:
+                mode = i
+                if frequency:
+                    return mode, modal
+                return mode
+            
+
+    def mode2(self, array, frequency=None):
+        """
+        Returns the mode of a array.
+        If the optional argument is passed, a tuple is returned containing the mode and it's modal frequency.
+        
+        Parameters:
+        - An array of integers or floats
+        - (Optional) Takes a boolean as argument
+        """
+        array = list(array) # To convert numpy ndarrays
+        explored = []
+        counts = []
+
+        for i in array:
+            if i not in explored:
+                counts.append(array.count(i))
+                explored.append(i)
+        
+        modal = max(counts)
+        mode = explored[(counts.index(modal))]
+
+        if frequency:
+            return mode, modal
+        return mode
+    
+
+    def mode(self, array):
         """
         Returns the mode of a array.
         
         Parameters:
         - An array of integers or floats
         """
-        from collections import Counter
+        # from collections import Counter
         pairs = Counter(iter(array)).most_common(1)
         try:
             return pairs[0][0]
@@ -88,3 +148,4 @@ class Stat:
         if floats:
             return round((self.variance(array) ** .5), floats)
         return self.variance(array) ** .5
+
