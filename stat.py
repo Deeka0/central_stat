@@ -126,10 +126,8 @@ class Stat(Counter):
         - (Optional) Takes an integer as argument
         """
         mean = self.mean(array)
-        temp_array = []
-
-        for i in array:
-            temp_array.append((i - mean) ** 2)
+        temp_array = [(i - mean) ** 2 for i in array]
+        
         if floats:
             return round((self.mean(temp_array)), floats)
         return self.mean(temp_array)
